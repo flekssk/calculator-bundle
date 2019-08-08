@@ -1,6 +1,6 @@
 <?php
 
-namespace FKS\stringCalculator\Calculators;
+namespace FKS\StringCalculator\Calculators;
 
 class Result
 {
@@ -8,7 +8,7 @@ class Result
     protected $success = false;
     /** @var string */
     protected $error = '';
-    /** @var int  */
+    /** @var int */
     protected $result = 0;
 
     /**
@@ -30,7 +30,7 @@ class Result
     /**
      * @return mixed
      */
-    public function getResult() : int
+    public function getResult(): int
     {
         return $this->result;
     }
@@ -57,5 +57,14 @@ class Result
     public function setError(string $error): void
     {
         $this->error = $error;
+    }
+
+    public function toArray()
+    {
+        return [
+            'success' => $this->isSuccess(),
+            'result'  => $this->getResult(),
+            'error'   => $this->getError(),
+        ];
     }
 }

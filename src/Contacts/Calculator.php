@@ -1,8 +1,8 @@
 <?php
 
-namespace FKS\stringCalculator\Contacts;
+namespace FKS\StringCalculator\Contacts;
 
-use FKS\stringCalculator\Calculators\Result;
+use FKS\StringCalculator\Calculators\Result;
 
 interface Calculator
 {

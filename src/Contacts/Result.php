@@ -1,6 +1,6 @@
 <?php
 
-namespace FKS\stringCalculator\Contacts;
+namespace FKS\StringCalculator\Contacts;
 
 interface Result
 {

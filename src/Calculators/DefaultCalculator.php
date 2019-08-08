@@ -1,10 +1,10 @@
 <?php
 
-namespace FKS\stringCalculator\Calculators;
+namespace FKS\StringCalculator\Calculators;
 
 use Exception;
-use FKS\stringCalculator\Contacts\Calculator;
-use FKS\stringCalculator\Exceptions\WrongCharacterSequence;
+use FKS\StringCalculator\Contacts\Calculator;
+use FKS\StringCalculator\Exceptions\WrongCharacterSequence;
 
 class DefaultCalculator implements Calculator
 {
