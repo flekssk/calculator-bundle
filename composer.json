@@ -1,5 +1,6 @@
 {
-    "type": "project",
+    "name": "FKS/StringCalculator",
+    "description": "Slice the given string on numbers and operators and try to calculate",
     "license": "proprietary",
     "require": {
         "php": "^7.1.3",
