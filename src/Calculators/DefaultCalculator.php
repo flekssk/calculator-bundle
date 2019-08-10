@@ -4,6 +4,7 @@ namespace FKS\StringCalculator\Calculators;
 
 use Exception;
 use FKS\StringCalculator\Contacts\Calculator;
+use FKS\StringCalculator\Entities\Result;
 use FKS\StringCalculator\Exceptions\WrongCharacterSequence;
 
 class DefaultCalculator implements Calculator
