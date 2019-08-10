@@ -2,7 +2,7 @@
     "name": "flekssk/calculator-bundle",
     "description": "Slice the given string on numbers and operators and try to calculate",
     "license": "proprietary",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "type": "symfony-bundle",
     "require": {
         "php": "^7.1.3",
@@ -38,14 +38,5 @@
         "symfony/polyfill-php71": "*",
         "symfony/polyfill-php70": "*",
         "symfony/polyfill-php56": "*"
-    },
-    "conflict": {
-        "symfony/symfony": "*"
-    },
-    "extra": {
-        "symfony": {
-            "allow-contrib": false,
-            "require": "4.3.*"
-        }
     }
 }
