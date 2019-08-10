@@ -1,5 +1,5 @@
 {
-    "name": "flekssk/calculatorBundle",
+    "name": "flekssk/calculator-bundle",
     "description": "Slice the given string on numbers and operators and try to calculate",
     "license": "proprietary",
     "version": "1.0.0",
