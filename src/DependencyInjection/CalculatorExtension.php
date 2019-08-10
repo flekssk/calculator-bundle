@@ -1,6 +1,6 @@
 <?php
 
-namespace FKS\stringCalculator\DependencyInjection;
+namespace FKS\StringCalculator\DependencyInjection;
 
 use Exception;
 use Symfony\Component\Config\FileLocator;
