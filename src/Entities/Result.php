@@ -1,6 +1,6 @@
 <?php
 
-namespace FKS\StringCalculator\Calculators;
+namespace FKS\StringCalculator\Entities;
 
 class Result
 {
