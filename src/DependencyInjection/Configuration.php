@@ -14,7 +14,20 @@ class Configuration implements ConfigurationInterface
      */
     public function getConfigTreeBuilder()
     {
-        $treeBuilder = new TreeBuilder('calculator');
+        $treeBuilder = new TreeBuilder();
+
+        $treeBuilder->root('calculator')
+                    ->children()
+                    ->arrayNode('options')
+                    ->defaultValue(
+                        [
+                            'calculatorAlias' => 'default',
+                            'resultAlias'     => 'default',
+                        ]
+                    )
+                    ->scalarPrototype()
+                    ->end()
+                    ->end();
 
         return $treeBuilder;
     }
