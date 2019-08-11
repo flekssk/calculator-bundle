@@ -1,0 +1,3 @@
+services:
+  FKS\StringCalculator\Calculators\DefaultCalculator:
+    autowire: true
