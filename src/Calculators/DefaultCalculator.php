@@ -6,17 +6,27 @@ use FKS\StringCalculator\Contacts\Calculator;
 use FKS\StringCalculator\Contacts\Result;
 use FKS\StringCalculator\Exceptions\CalculatorException;
 use FKS\StringCalculator\Exceptions\WrongCharacterSequence;
+use FKS\StringCalculator\Results\DefaultResult;
+use Psr\Container\ContainerInterface;
+use Symfony\Component\DependencyInjection\Container;
 
 class DefaultCalculator implements Calculator
 {
+    protected $container;
+
+    public function __construct(ContainerInterface $container)
+    {
+        $this->container = $container;
+    }
+
     public function calculate(string $string): Result
     {
-        $result = new Result();
+        $result = new DefaultResult();
 
         try {
             $subPartsSeparator = $this->searchSubPartsSeparators($string);
 
-            if (count($subPartsSeparator) > 0) {
+            if (count($subPartsSeparator[0]) > 0) {
                 if ($subPartsSeparator[0][0] == ")" || count($subPartsSeparator) % 2 > 0) {
                     throw new WrongCharacterSequence();
                 }
@@ -48,14 +58,24 @@ class DefaultCalculator implements Calculator
         return $result;
     }
 
+    /**
+     * Search parentheses
+     *
+     * @param string $string
+     * @return array
+     *
+     * @todo To most useful need realize object
+     */
     public function searchSubPartsSeparators(string $string): array
     {
-        return preg_match_all(
+        preg_match_all(
             '/[((?<=\()(.)(?=\)))]/',
             $string,
             $subGroups,
             PREG_OFFSET_CAPTURE
         );
+
+        return $subGroups;
     }
 
     public function calculateSimplePart(string $string)
