@@ -1,6 +1,6 @@
 <?php
 
-namespace FKS\stringCalculator\Exceptions;
+namespace FKS\StringCalculator\Exceptions;
 
 class WrongCharacterSequence extends CalculatorException
 {
