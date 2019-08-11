@@ -1,8 +1,8 @@
 <?php
 
-namespace FKS\StringCalculator\Entities;
+namespace FKS\StringCalculator\Results;
 
-class Result
+class DefaultResult
 {
     /** @var bool */
     protected $success = false;
