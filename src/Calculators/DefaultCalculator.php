@@ -2,9 +2,9 @@
 
 namespace FKS\StringCalculator\Calculators;
 
-use Exception;
 use FKS\StringCalculator\Contacts\Calculator;
 use FKS\StringCalculator\Entities\Result;
+use FKS\stringCalculator\Exceptions\CalculatorException;
 use FKS\StringCalculator\Exceptions\WrongCharacterSequence;
 
 class DefaultCalculator implements Calculator
@@ -41,7 +41,7 @@ class DefaultCalculator implements Calculator
 
             $result->setResult($this->calculateSimplePart($string));
 
-        } catch (Exception $exception) {
+        } catch (CalculatorException $exception) {
             $result->setSuccess(false);
         }
 

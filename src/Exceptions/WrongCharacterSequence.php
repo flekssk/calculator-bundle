@@ -2,8 +2,6 @@
 
 namespace FKS\stringCalculator\Exceptions;
 
-use Exception;
-
-class WrongCharacterSequence extends Exception
+class WrongCharacterSequence extends CalculatorException
 {
 }
