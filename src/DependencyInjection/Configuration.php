@@ -14,7 +14,7 @@ class Configuration implements ConfigurationInterface
      */
     public function getConfigTreeBuilder()
     {
-        $treeBuilder = new TreeBuilder('fks.calculator');
+        $treeBuilder = new TreeBuilder('calculator');
 
         return $treeBuilder;
     }
