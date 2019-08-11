@@ -8,7 +8,6 @@ use FKS\StringCalculator\Exceptions\CalculatorException;
 use FKS\StringCalculator\Exceptions\WrongCharacterSequence;
 use FKS\StringCalculator\Results\DefaultResult;
 use Psr\Container\ContainerInterface;
-use Symfony\Component\DependencyInjection\Container;
 
 class DefaultCalculator implements Calculator
 {

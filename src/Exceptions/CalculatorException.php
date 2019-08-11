@@ -1,6 +1,6 @@
 <?php
 
-namespace FKS\SstringCalculator\Exceptions;
+namespace FKS\StringCalculator\Exceptions;
 
 use Exception;
 
