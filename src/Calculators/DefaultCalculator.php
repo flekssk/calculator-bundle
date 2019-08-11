@@ -3,8 +3,8 @@
 namespace FKS\StringCalculator\Calculators;
 
 use FKS\StringCalculator\Contacts\Calculator;
-use FKS\StringCalculator\Entities\Result;
-use FKS\stringCalculator\Exceptions\CalculatorException;
+use FKS\StringCalculator\Contacts\Result;
+use FKS\StringCalculator\Exceptions\CalculatorException;
 use FKS\StringCalculator\Exceptions\WrongCharacterSequence;
 
 class DefaultCalculator implements Calculator

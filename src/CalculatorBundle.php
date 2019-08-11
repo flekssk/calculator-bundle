@@ -2,8 +2,8 @@
 
 namespace FKS\StringCalculator;
 
-use FKS\stringCalculator\Calculators\DefaultCalculator;
-use FKS\stringCalculator\Contacts\Calculator as CalculatorInterface;
+use FKS\StringCalculator\Calculators\DefaultCalculator;
+use FKS\StringCalculator\Contacts\Calculator as CalculatorInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
