@@ -23,5 +23,5 @@ interface Result
      *
      * @return string
      */
-    public function getErrors() : string;
+    public function getError() : string;
 }
