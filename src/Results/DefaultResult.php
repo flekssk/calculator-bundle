@@ -2,7 +2,9 @@
 
 namespace FKS\StringCalculator\Results;
 
-class DefaultResult
+use FKS\StringCalculator\Contacts\Result;
+
+class DefaultResult implements Result
 {
     /** @var bool */
     protected $success = false;
