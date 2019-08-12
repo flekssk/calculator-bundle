@@ -18,12 +18,19 @@ class DefaultCalculator implements Calculator
         $this->container = $container;
     }
 
+    /**
+     * @param string $string
+     * @return Result
+     *
+     * @todo Pass message to exceptions
+     */
     public function calculate(string $string): Result
     {
         $result = new DefaultResult();
+        $string = new CalculationString($string);
 
         try {
-            $subPartsSeparator = $this->searchSubPartsSeparators($string);
+            $subPartsSeparator = $string->getSubPartsSeparators();
             if (count($subPartsSeparator) > 0) {
                 if ($subPartsSeparator[0] == ")" || count($subPartsSeparator) % 2 > 0) {
                     throw new WrongCharacterSequence();
@@ -33,11 +40,9 @@ class DefaultCalculator implements Calculator
                     $startPart  = $subPartsSeparator[$i];
                     $closedPart = $subPartsSeparator[$i + 1];
 
-                    $string = substr_replace(
-                        $string,
+                    $string->replacePart(
                         $this->calculateSimplePart(
-                            substr(
-                                $string,
+                            $string->getPart(
                                 $startPart[1] + 1,
                                 $closedPart[1] - $startPart[1] - 1
                             )
@@ -59,39 +64,25 @@ class DefaultCalculator implements Calculator
         return $result;
     }
 
-    /**
-     * Search parentheses
-     *
-     * @param string $string
-     * @return array
-     *
-     * @todo To most useful need realize object
-     */
-    public function searchSubPartsSeparators(string $string): array
+    public function calculateSimplePart(CalculationString $string)
     {
-        preg_match_all(
-            '/[((?<=\()(.)(?=\)))]/',
-            $string,
-            $subGroups,
-            PREG_OFFSET_CAPTURE
-        );
+        $operands = $string->getOperandsByPriority();
+        $result   = (int)array_shift($operands['numbers'])[0];
 
-        return $subGroups[0];
-    }
-
-    public function calculateSimplePart(string $string)
-    {
-        preg_match_all('/[0-9]{1,}/', $string, $numbers);
-        preg_match_all('/[+|-|*]{1,}/', $string, $operators);
-
-        $numbers = array_shift($numbers);
-        $result  = (int)array_shift($numbers);
-
-        foreach ($operators[0] as $operator) {
-            if ($operator == '+') {
-                $result = $result + (int)array_shift($numbers);
-            } elseif ($operator == '*') {
-                $result = $result * (int)array_shift($numbers);
+        foreach ($operands['operators'] as $operator) {
+            switch ($operator[0]) {
+                case '+':
+                    $result = $result + (int)array_shift($operands['numbers'])[0];
+                    break;
+                case '-':
+                    $result = $result - (int)array_shift($operands['numbers'])[0];
+                    break;
+                case '*':
+                    $result = $result * (int)array_shift($operands['numbers'])[0];
+                    break;
+                case '/':
+                    $result = $result / (int)array_shift($operands['numbers'])[0];
+                    break;
             }
         }
 
