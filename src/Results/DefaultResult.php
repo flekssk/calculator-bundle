@@ -7,7 +7,7 @@ use FKS\StringCalculator\Contacts\Result;
 class DefaultResult implements Result
 {
     /** @var bool */
-    protected $success = false;
+    protected $success = true;
     /** @var string */
     protected $error = '';
     /** @var int */
