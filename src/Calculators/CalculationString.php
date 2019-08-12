@@ -2,8 +2,6 @@
 
 namespace FKS\StringCalculator\Calculators;
 
-use Symfony\Component\VarDumper\VarDumper;
-
 class CalculationString
 {
     protected $string;
@@ -58,7 +56,7 @@ class CalculationString
 
     public function getOperators()
     {
-        preg_match_all('/[+|-|*]{1,}/', $this->string, $operators, PREG_OFFSET_CAPTURE);
+        preg_match_all('/[+|-|*|\/]{1,}/', $this->string, $operators, PREG_OFFSET_CAPTURE);
 
         return $operators[0];
     }
@@ -72,16 +70,16 @@ class CalculationString
 
     public function getOperatorsByPriority()
     {
-        $byPriority = [];
+        $notPriorityOperators = [];
+        $priorityOperators = [];
         foreach ($this->getOperators() as $operator) {
             if (in_array($operator[0], $this->highPriorityOperands)) {
-                array_unshift($byPriority, $operator);
+                array_push($priorityOperators, $operator);
             } else {
-                array_push($byPriority, $operator);
+                array_push($notPriorityOperators, $operator);
             }
         }
-
-        return $byPriority;
+        return array_merge($priorityOperators, $notPriorityOperators);
     }
 
     public function getOperandsByPriority()
@@ -91,22 +89,18 @@ class CalculationString
             'operators' => $this->getOperatorsByPriority(),
         ];
         $numbers = $this->getNumbers();
-
         foreach ($result['operators'] as $operator) {
             $operatorPosition = $operator[1];
-            $operatorNumbers  = [];
-            
+
             foreach ($numbers as $number) {
-                $numberLength = strlen((string)$number[0]);
-                if ($number[1] == $operatorPosition - $numberLength) {
-                    array_unshift($operatorNumbers, $number);
+                if(count($result['numbers']) == 0 && $number[1] == $operatorPosition - strlen((string)$number[0])) {
+                    array_unshift($result['numbers'], $number);
                 }
+
                 if ($number[1] == $operatorPosition + 1) {
-                    array_push($operatorNumbers, $number);
+                    array_push($result['numbers'], $number);
                 }
             }
-
-            $result['numbers'] = array_merge($result['numbers'], $operatorNumbers);
         }
 
         return $result;
