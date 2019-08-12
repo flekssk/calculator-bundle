@@ -9,19 +9,19 @@ interface Result
      *
      * @return bool
      */
-    public function isSuccess() : bool;
+    public function isSuccess(): bool;
 
     /**
      * Return the calculation result
      *
      * @return int
      */
-    public function getResult() : int;
+    public function getResult(): int;
 
     /**
      * Return the error string
      *
      * @return string
      */
-    public function getError() : string;
+    public function getError(): string;
 }

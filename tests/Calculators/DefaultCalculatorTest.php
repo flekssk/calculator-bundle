@@ -16,7 +16,7 @@ class DefaultCalculatorTest extends TestCase
      * @param $validResult
      * @dataProvider provideValidStrings
      */
-    public function testCalculate($string, $validResult) : void
+    public function testCalculate($string, $validResult): void
     {
         $result = $this->calculator->calculate($string);
 
@@ -38,12 +38,12 @@ class DefaultCalculatorTest extends TestCase
      * @param $result
      * @dataProvider provideValidSimpleStrings
      */
-    public function testCalculateSimplePart($string, $result) : void
+    public function testCalculateSimplePart($string, $result): void
     {
         $this->assertEquals($result, $this->calculator->calculateSimplePart((new CalculationString($string))));
     }
 
-    public function provideValidStrings() : array
+    public function provideValidStrings(): array
     {
         return [
             ['20 /5 + 2', '6'],
@@ -52,7 +52,7 @@ class DefaultCalculatorTest extends TestCase
         ];
     }
 
-    public function provideValidSimpleStrings() : array
+    public function provideValidSimpleStrings(): array
     {
         return [
             ['1 + 1 + 1', '3'],
@@ -61,7 +61,7 @@ class DefaultCalculatorTest extends TestCase
         ];
     }
 
-    protected function setUp() : void
+    protected function setUp(): void
     {
         $this->calculator = new DefaultCalculator();
     }

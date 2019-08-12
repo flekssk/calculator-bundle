@@ -71,7 +71,7 @@ class CalculationString
     public function getOperatorsByPriority()
     {
         $notPriorityOperators = [];
-        $priorityOperators = [];
+        $priorityOperators    = [];
         foreach ($this->getOperators() as $operator) {
             if (in_array($operator[0], $this->highPriorityOperands)) {
                 array_push($priorityOperators, $operator);
@@ -93,7 +93,7 @@ class CalculationString
             $operatorPosition = $operator[1];
 
             foreach ($numbers as $number) {
-                if(count($result['numbers']) == 0 && $number[1] == $operatorPosition - strlen((string)$number[0])) {
+                if (count($result['numbers']) == 0 && $number[1] == $operatorPosition - strlen((string)$number[0])) {
                     array_unshift($result['numbers'], $number);
                 }
 
